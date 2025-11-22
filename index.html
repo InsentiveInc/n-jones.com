@@ -17,25 +17,32 @@
       background: #000;
     }
 
+    body {
+      margin: 0;
+    }
+
     .page {
-      min-height: 100vh;
+      height: 100vh;              /* one viewport high */
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
     }
 
     .image-wrapper {
-      flex: 1;
+      flex: 1 1 auto;             /* takes all space above bottom box */
       display: flex;
       align-items: center;
       justify-content: center;
       background: #000;
+      overflow: hidden;
     }
 
     .image-wrapper img {
-      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
       height: auto;
       display: block;
+      object-fit: contain;        /* keep whole image visible */
     }
 
     .bottom-box {
@@ -52,7 +59,7 @@
 <body>
   <div class="page">
     <div class="image-wrapper">
-      <!-- Make sure this path & file name match exactly -->
+      <!-- Leave this as whatever your actual folder/file is, I'm not touching it -->
       <img src="Mark Alvarez/Photo.png" alt="Mark Alvarez" />
     </div>
 
