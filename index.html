@@ -19,16 +19,24 @@
 
     body {
       margin: 0;
+      overflow: hidden;            /* no scrolling */
     }
 
     .page {
-      height: 100vh;              /* one viewport high */
+      height: 100vh;               /* fallback */
       display: flex;
       flex-direction: column;
     }
 
+    /* On modern mobile browsers, use real visible height */
+    @supports (height: 100dvh) {
+      .page {
+        height: 100dvh;
+      }
+    }
+
     .image-wrapper {
-      flex: 1 1 auto;             /* takes all space above bottom box */
+      flex: 1 1 auto;              /* takes all space above bottom box */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -42,24 +50,25 @@
       width: auto;
       height: auto;
       display: block;
-      object-fit: contain;        /* keep whole image visible */
+      object-fit: contain;         /* full image, no cropping */
     }
 
     .bottom-box {
       background: #ffffff;
-      padding: 16px 24px;
+      padding: 12px 16px;          /* slightly tighter for small screens */
       text-align: center;
       font-weight: bold;
       color: #000000;
-      font-size: 1.1rem;
+      font-size: 1rem;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;              /* never squish the text box */
     }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="image-wrapper">
-      <!-- Leave this as whatever your actual folder/file is, I'm not touching it -->
+      <!-- keep whatever path is actually working for you -->
       <img src="Mark Alvarez/Photo.png" alt="Mark Alvarez" />
     </div>
 
